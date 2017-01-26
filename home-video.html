@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce" lang="en-us">
+<head>
+    <title>Vult Cosmética</title>
+    <vtex:metaTags/>
+    <vtex:template id="favicon" />
+    <vtex:template id="commonStyles" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="http://www.rs1.com.br/arquivos/bootstrap-hover-dropdown.js"></script>
+</head>
+
+<body id="home-page">
+
+    <div class="page">
+
+        <!--  SubTemplate: Header -->
+        <vtex:template id="header-menu" />
+        <!-- /SubTemplate: Header -->
+    
+        <!--  SubTemplate: MenuFlutuante -->
+        <vtex:template id="menu-flutuante" />
+        <!--  SubTemplate: MenuFlutuante -->
+
+    <section id="home-content">   
+<!-- Banner Video Adicionado Por Júlio -->  
+      <div class="fullbanner">
+        <div class="homepage-hero-module">
+    <div class="video-container">
+<div class="row row-cont-video">
+  <div class="container sombra-negra">
+    <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9">
+        <div class=""><img class="img-responsive" src="/arquivos/cat_banner_1.png"/></div><br/> 
+        <div class=""><img class="img-responsive" src="/arquivos/cat_banner_2.png"/></div><br/>
+        <div class=""><img class="img-responsive" src="/arquivos/cat_banner_3.png"/></div><br/> 
+        <div class=""><img class="img-responsive" src="/arquivos/cat_banner_4.png"/></div><br/> 
+    </div>
+ </div>
+</div>
+<!--<div class="title-container">
+            <div class="headline">
+                  <h1>Welcome to our Company</h1>
+
+            </div>
+            <div class="description">
+                <div class="inner">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
+            </div>
+        </div>-->
+        <div class="filter"></div>
+        <video loop="loop" autoplay="autoplay" class="fillWidth">
+            <source src="http://egoodz.com.br/videos/FASHION%20FILM%20VULT%20COM%20ANA%20CLAUDIA%20MICHELS.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.</video>
+        <div class="poster hidden">
+            <img src="http://www.videojs.com/img/poster.jpg" alt=""/>
+        </div>
+    </div>
+</div>
+<style>
+.sombra-negra {
+background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 35%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 35%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 35%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
+}
+.row-cont-video{
+  float: right!important;
+  /*z-index: 1000!important;*/
+  position: absolute!important;
+  /*top: 10%!important;*/
+  width: 100%!important;
+  left: 48%!important;
+  color: #fff!important;
+}
+    .homepage-hero-module {
+  border-right: none;
+  border-left: none;
+  position: relative;
+}
+.no-video .video-container video,
+.touch .video-container video {
+  display: none;
+}
+.no-video .video-container .poster,
+.touch .video-container .poster {
+  display: block !important;
+}
+.video-container {
+  position: relative;
+  bottom: 0%;
+  left: 0%;
+  height: 587px!important;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+}
+.video-container .poster img {
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+}
+.video-container .filter {
+  z-index: 100;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+}
+.video-container .title-container {
+  z-index: 1000;
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+.video-container .description .inner {
+  font-size: 1em;
+  width: 45%;
+  margin: 0 auto;
+}
+.video-container .link {
+  position: absolute;
+  bottom: 3em;
+  width: 100%;
+  text-align: center;
+  z-index: 1001;
+  font-size: 2em;
+  color: #fff;
+}
+.video-container .link a {
+  color: #fff;
+}
+.video-container video {
+  z-index: 0;
+  bottom: 0;
+}
+.video-container video.fillWidth {
+  width: 100%;
+}
+</style>
+<script>
+    $("video").prop('muted', true);
+</script>
+<script>
+    /** Document Ready Functions **/
+/********************************************************************/
+
+$( document ).ready(function() {
+
+    // Resive video
+    scaleVideoContainer();
+
+    initBannerVideoSize('.video-container .poster img');
+    initBannerVideoSize('.video-container .filter');
+    initBannerVideoSize('.video-container video');
+        
+    $(window).on('resize', function() {
+        scaleVideoContainer();
+        scaleBannerVideoSize('.video-container .poster img');
+        scaleBannerVideoSize('.video-container .filter');
+        scaleBannerVideoSize('.video-container video');
+    });
+
+});
+
+/** Reusable Functions **/
+/********************************************************************/
+
+function scaleVideoContainer() {
+
+    var height = $(window).height();
+    var unitHeight = parseInt(height) + 'px';
+    $('.homepage-hero-module').css('height',unitHeight);
+
+}
+
+function initBannerVideoSize(element){
+    
+    $(element).each(function(){
+        $(this).data('height', $(this).height());
+        $(this).data('width', $(this).width());
+    });
+
+    scaleBannerVideoSize(element);
+
+}
+
+function scaleBannerVideoSize(element){
+
+    var windowWidth = $(window).width(),
+        windowHeight = $(window).height(),
+        videoWidth,
+        videoHeight;
+    
+    console.log(windowHeight);
+
+    $(element).each(function(){
+        var videoAspectRatio = $(this).data('height')/$(this).data('width'),
+            windowAspectRatio = windowHeight/windowWidth;
+
+        if (videoAspectRatio > windowAspectRatio) {
+            videoWidth = windowWidth;
+            videoHeight = videoWidth * videoAspectRatio;
+            $(this).css({'top' : -(videoHeight - windowHeight) / 2 + 'px', 'margin-left' : 0});
+        } else {
+            videoHeight = windowHeight;
+            videoWidth = videoHeight / videoAspectRatio;
+            $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
+        }
+
+        $(this).width(videoWidth).height(videoHeight);
+
+        $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
+        
+
+    });
+}
+</script>
+<!-- ./ Banner Video Adicionado Por Júlio -->
+      </div>
+  
+      <div class="destaques">
+        <div class="row">
+          <div class="col-sm-8">
+            <a href="/Revista"><img src="/arquivos/banner01s.png" alt=""/></a>
+          </div>
+          <div class="col-sm-4">
+            <a href=""><img src="/arquivos/banner02s.jpg" alt=""/></a>
+          </div>
+        </div>
+      </div>
+      <!-- #content -->  
+      
+      <div class="collectionWrap product-carousel">
+        <!--  Controle: Resultado da busca / Lista de produtos -->
+        <vtex:contentPlaceHolder id="Produtos-Home" />
+        <!--<vtex.cmc:searchResult layout="ef3fcb99-de72-4251-aa57-71fe5b6e149f" itemCount="10" columnCount="10" />-->
+        <!--  /Controle: Resultado da busca / Lista de produtos -->
+      </div>
+      
+      <div class="equalizer video-foto text-center">
+        <div class="row no-gutters">
+          <div class="col-sm-12 col-lg-5 col-lg-offset-1 embed-responsive">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/eQdM-sR_0KE?rel=0"></iframe>
+          </div>
+          <div class="col-sm-12 col-lg-5">
+            <a href=""><img src="/arquivos/destaque1.jpg" alt=""/></a>
+          </div>
+        </div>
+        
+        <div class="row no-gutters">
+          <div class="col-sm-12 col-lg-5 col-lg-offset-1">
+            <a href=""><img src="/arquivos/destaque2.jpg" alt=""/></a>
+          </div>
+          <div class="col-sm-12 col-lg-5 embed-responsive">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/QDjy6CnBKBE?rel=0"></iframe>
+          </div>
+        </div>
+      </div>
+      
+      
+    </section>        
+                
+        <!--  SubTemplate: Footer -->
+        <vtex:template id="Footer" />
+        <!-- /SubTemplate: Footer -->
+    
+    </div><!-- .page -->
+    
+  <vtex:template id="commonScripts" />
+  <vtex.cmc:productQuickView/>
+  <style>
+      .owl-prev, .owl-next {
+  display: block!important;
+  margin-left: 1.3%!important;
+  z-index: 999999!important;
+}
+.amount-in-cart {
+  display: none!important;
+}
+</style>
+</body>
+</html>
